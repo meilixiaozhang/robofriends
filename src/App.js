@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App tc">
-      <h1>Robofriends</h1>
+      <h1 className="f1">Robofriends</h1>
       <SearchBox searchChange={handleChange} />
       {searchResults.map(CardList)}
     </div>
