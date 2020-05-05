@@ -1,23 +1,29 @@
-import React from "react";
-import Card from "./components/Card";
+import React, { useState, useEffect } from "react";
 import robots from "./robots";
 import "tachyons";
+import CardList from "./components/CardList";
+import SearchBox from "./components/SearchBox";
 
-function createCard(props) {
-  return (
-    <Card
-      key={props.id}
-      name={props.name}
-      username={props.username}
-      email={props.email}
-    />
-  );
-}
 function App() {
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  function handleChange(event) {
+    setSearchTerm(event.target.value);
+  }
+
+  useEffect(() => {
+    const results = robots.filter((robot) =>
+      robot.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+
   return (
-    <div className="App">
+    <div className="App tc">
       <h1>Robofriends</h1>
-      {robots.map(createCard)}
+      <SearchBox searchChange={handleChange} />
+      {searchResults.map(CardList)}
     </div>
   );
 }
