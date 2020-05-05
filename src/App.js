@@ -3,6 +3,7 @@ import robots from "./robots";
 import "tachyons";
 import CardList from "./components/CardList";
 import SearchBox from "./components/SearchBox";
+import "./App.css";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
