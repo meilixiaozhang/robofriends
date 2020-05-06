@@ -4,6 +4,7 @@ import "tachyons";
 import CardList from "./components/CardList";
 import SearchBox from "./components/SearchBox";
 import "./App.css";
+import Scroll from "./components/Scroll";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -31,7 +32,7 @@ function App() {
     <div className="App tc">
       <h1 className="f1">Robofriends</h1>
       <SearchBox searchChange={handleChange} />
-      {searchResults.map(CardList)}
+      <Scroll>{searchResults.map(CardList)}</Scroll>
     </div>
   );
 }
